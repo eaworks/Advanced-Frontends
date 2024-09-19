@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From and To</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <aside>
+            <h3>menu.</h3>
+            <nav>
+                <ul>
+                    <li>
+                        <div class="mask"><a href="#">Dashboard</a></div>
+                    </li>
+                    <li>
+                        <div class="mask"><a href="#">Earning</a></div>
+                    </li>
+                    <li>
+                        <div class="mask"><a href="#">Customers</a></div>
+                    </li>
+                    <li>
+                        <div class="mask"><a href="#">Affiliates</a></div>
+                    </li>
+                    <li>
+                        <div class="mask"><a href="#">Courses</a></div>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <a href="#" class="menu-toogle">
+                <svg class="open-menu" viewBox="0 0 52 27" fill="none">
+                    <path
+                        d="M0.891846 1.83136C0.891846 1.00293 1.56342 0.33136 2.39185 0.33136H27.3234C28.1519 0.33136 28.8234 1.00293 28.8234 1.83136C28.8234 2.65979 28.1519 3.33136 27.3234 3.33136H2.39185C1.56342 3.33136 0.891846 2.65979 0.891846 1.83136ZM0.891846 13.5306C0.891846 12.7022 1.56342 12.0306 2.39185 12.0306H49.4001C50.2285 12.0306 50.9001 12.7022 50.9001 13.5306C50.9001 14.359 50.2285 15.0306 49.4001 15.0306H2.39185C1.56342 15.0306 0.891846 14.359 0.891846 13.5306ZM24.4685 23.7298C23.6401 23.7298 22.9685 24.4014 22.9685 25.2298C22.9685 26.0582 23.6401 26.7298 24.4685 26.7298H49.4001C50.2285 26.7298 50.9001 26.0582 50.9001 25.2298C50.9001 24.4014 50.2285 23.7298 49.4001 23.7298H24.4685Z"
+                        fill="black" />
+                </svg>
+            </a>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const menuToggle = document.querySelector('.menu-toogle')
+        let menuStatus = false
+        const menuTL = gsap.timeline({
+            default:{
+                duration:.3,
+                ease:'power4.out'
+            }
+        })
+        menuTL.to(['main', 'aside'], {
+            x:0,
+            stagger: .2
+        })
+        menuTL.paused(true)
+        menuToggle.addEventListener('click', ()=>{
+            if (!menuStatus) {
+                menuTL.play()
+                menuStatus=true
+            } else {
+                menuTL.reverse()
+                menuStatus = false
+            }
+        })
+    </script>
+</body>
+
+</html>
