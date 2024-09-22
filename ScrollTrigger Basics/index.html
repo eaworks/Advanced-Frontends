@@ -47,10 +47,12 @@
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: '.middle',
-                start: 'top middle',
+                start: 'top 20%',
                 end: 'bottom+=20% center',
                 // markers: true
-                scrub:true
+                // scrub:true
+
+                toggleActions: 'play reverse play reverse'
             }
         })
         tl
@@ -62,7 +64,8 @@
             .from('.box', {
                 scaleY: 0,
                 ease: 'elastic.out(1, 0.5)',
-                duration: 2
+                duration: 2,
+                stagger: .3
             }, "<")
     </script>
 </body>
