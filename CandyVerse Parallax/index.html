@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CandyVerse Parallax</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<img src="images/mask.png" alt="Mask graphic" class="mask">
+<section>
+    <h1 class="parallax" data-speed="400">CanyVerse</h1>
+    <img src="images/bg.jpg" alt="" class="parallax bg" data-speed="0">
+    <img src="images/middle-bg.png" alt="" class="parallax middle-bg" data-speed="10">
+    <img src="images/cupcake.png" alt="" class="parallax cupcake" data-speed="-12">
+</section>
+<section></section>
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script>
+        const images = gsap.utils.toArray('.parallax')
+        images.forEach(image=> {
+            gsap.to(image, {
+                yPercent: image.dataset.speed,
+                scrollTrigger: {
+                    scrub: true
+                }
+            })
+        })
+        
+
+        // smooth scroll
+        const lenis = new Lenis()
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+        requestAnimationFrame(raf)
+
+    </script>
+</body>
+
+</html>
