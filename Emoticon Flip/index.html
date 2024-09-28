@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoticon Flip</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bayon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <main>
+        <div class="left">
+            <div class="emoticon">
+                <div class="eyes">
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                </div>
+                <svg class="mouth" width="79" height="28" viewBox="0 0 79 28" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M38.3062 10.5989C29.8751 10.5978 20.9814 15.0855 8.32909 26.0303C6.24063 27.8369 3.08307 27.6084 1.27646 25.5199C-0.530144 23.4315 -0.301659 20.2739 1.78679 18.4673C14.804 7.20684 26.0741 0.597324 38.3075 0.598938C50.466 0.600542 62.216 7.14369 76.1863 18.3483C78.3404 20.076 78.6861 23.2229 76.9584 25.3771C75.2307 27.5313 72.0838 27.877 69.9296 26.1492C56.2274 15.1595 46.8122 10.6001 38.3062 10.5989Z" />
+                </svg>
+
+            </div>
+        </div>
+        <div class="right">
+            <!-- <div class="emoticon">
+                <div class="eyes">
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                </div>
+                <svg class="mouth" width="79" height="28" viewBox="0 0 79 28" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M38.3062 10.5989C29.8751 10.5978 20.9814 15.0855 8.32909 26.0303C6.24063 27.8369 3.08307 27.6084 1.27646 25.5199C-0.530144 23.4315 -0.301659 20.2739 1.78679 18.4673C14.804 7.20684 26.0741 0.597324 38.3075 0.598938C50.466 0.600542 62.216 7.14369 76.1863 18.3483C78.3404 20.076 78.6861 23.2229 76.9584 25.3771C75.2307 27.5313 72.0838 27.877 69.9296 26.1492C56.2274 15.1595 46.8122 10.6001 38.3062 10.5989Z"
+                        fill="#7000FF" />
+                </svg>
+
+            </div> -->
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
+    <script>
+        const clickable = document.querySelector('main')
+        const left = document.querySelector('.left')
+        const right = document.querySelector('.right')
+        const emoticon = document.querySelector('.emoticon')
+
+        let happy = false
+
+        gsap.registerPlugin(Flip)
+
+        clickable.addEventListener('click', () => {
+            flipEmoticon(happy)
+        })
+
+        function flipEmoticon(happyState) {
+            const state = Flip.getState(emoticon, { props: "borderRadius, background" })
+            if (happyState) {
+                left.appendChild(emoticon)
+                happy = false
+            } else {
+                right.appendChild(emoticon)
+                happy = true
+            }
+
+            Flip.from(state, {
+                duration: 1,
+                ease: 'power4.out'
+            })
+        }
+    </script>
+</body>
+
+</html>
